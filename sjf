@@ -1,0 +1,63 @@
+import java.util.*;
+
+public class el{
+    public static void main(String[] args) {
+    int a,b,c=0,d=0,z=0;
+    Scanner sc = new Scanner(System.in);
+    System.out.println("enter the number of vm's:");
+    a=sc.nextInt();
+    System.out.println("enter the number of tasks:");
+    b=sc.nextInt();
+    int[] len={100000,70000,5000,1000,3000,10000,90000,100000,15000,1000,2000,4000,20000,25000,80000};
+    int[] le=new int[b]; 
+    for(int i=0;i<b;i++){le[i]=len[i];}
+        for(int i=0;i<b;i++){
+            for(int j=i+1;j<b;j++){
+                if(le[i]>le[j]){
+                    d=le[i];
+                    le[i]=le[j];
+                    le[j]=d;
+                }
+            }
+        }
+    double[] vm=new double[a];
+    int[] no=new int[b];
+    double[] t={200,28,2,2,2,20,180,66.66,30,2,1.33,1.6,13.33,16.66,32};
+    double[] t1=new double[b];
+    
+    for(int i=0;i<b;i++){
+        for(int j=0;j<b;j++){
+            if(le[i]==len[j]){
+                no[i]=j;
+                len[j]=(i+987998);
+                break;
+            }
+         }
+         t1[i]=t[no[i]];
+         
+    }
+    
+   
+    for(int i=0;i<a;i++){
+        vm[i]=0;
+    }
+
+    for(int i=0;i<b;i++){
+        int k=i%a;
+            if(i<a){
+        System.out.println("task"+(no[i]+1)+"\t"+t1[i]+"\tVM"+(k+1));}
+        else{
+        System.out.println("task"+(no[i]+1)+"\t"+t1[i]+"\twait("+vm[k]+")"+"\tVM"+(k+1));}
+        if(i<(b-a)){
+            vm[k]+=t1[i];}
+    }
+    double twt=0;
+    for(int i=0;i<a;i++)
+    {
+        twt+=vm[i];
+    }
+    System.out.println("the total waiting time is : "+(float)twt);
+    System.out.println("the average waiting time is : "+(float)twt/a);
+     }
+
+}

@@ -1,0 +1,81 @@
+import java.util.*;
+
+public class el{
+    public static void main(String[] args) {
+    int a,b,c=0,d=0,z=0;
+    Scanner sc = new Scanner(System.in);
+    System.out.println("enter the number of vm's:");
+    a=sc.nextInt();
+    System.out.println("enter the number of tasks:");
+    b=sc.nextInt();
+    int[] len={100000,70000,5000,1000,3000,10000,90000,100000,15000,1000,2000,4000,20000,25000,80000};
+    int[] le=new int[b]; 
+    for(int i=0;i<b;i++){le[i]=len[i];}
+        for(int i=0;i<b;i++){
+            for(int j=i+1;j<b;j++){
+                if(le[i] < le[j]){
+                    d=le[i];
+                    le[i]=le[j];
+                    le[j]=d;
+                }
+            }
+        }
+    double[] vm=new double[a];
+    int[] aa=new int[a];
+    int[] val={500,500,1500,1500,2500,2500};
+    int[] v=new int[a];
+    for(int i=0;i<a;i++){v[i]=val[i];}
+    for(int i=0;i<a;i++){
+        for(int j=i+1;j<a;j++){
+            if(v[i]<v[j]){
+                int temp=v[i];
+                v[i]=v[j];
+                v[j]=temp;
+            }
+        }
+    }
+    for(int i=0;i<a;i++){
+        for(int j=a-1;j>=0;j--){
+            if(v[i]==val[j]){
+                aa[i]=j+1;
+                val[j]=(i+987998);
+                break;
+            }
+         }
+    }
+    int[] no=new int[b];
+    double[] t={40,140,3.33,0.4,6,6.6,60,40,6,0.67,0.8,8,8,50,53.33};
+    double[] t1=new double[b];
+    for(int i=0;i<b;i++){
+        for(int j=0;j<b;j++){
+            if(le[i]==len[j]){
+                no[i]=j;
+                len[j]=(i+987998);
+                break;
+            }
+         }
+         t1[i]=t[no[i]];    
+    }
+    for(int i=0;i<a;i++){
+        vm[i]=0;
+    }
+    for(int i=0;i<b;i++){
+        int k=aa[i%a];
+        int o=i%a;
+            if(i<a){
+        System.out.println("task"+(no[i]+1)+"\t"+t1[i]+"\tVM"+(k));}
+        else{
+        System.out.println("task"+(no[i]+1)+"\t"+t1[i]+"\twait("+vm[k-1]+")"+"\tVM"+(k));}
+        if(i<(b-a)){
+            vm[k-1]+=t1[i];}
+    }
+    double twt=0;
+    for(int i=0;i<a;i++)
+    {
+        twt+=vm[i];
+    }
+    System.out.println("the total waiting time is : "+(float)twt);
+    System.out.println("the average waiting time is : "+(float)twt/a);
+     }
+
+}

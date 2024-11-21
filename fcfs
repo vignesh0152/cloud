@@ -1,0 +1,40 @@
+import java.util.*;
+
+public class el{
+    public static void main(String[] args) {
+    int a,b,c=0,d;
+    Scanner sc = new Scanner(System.in);
+    System.out.println("enter the number of vm's:");
+    a=sc.nextInt();
+    System.out.println("enter the number of tasks:");
+    b=sc.nextInt();
+    double[] vm=new double[a];
+    double[] t={200,140,3.33,0.66,1.2,4,180,200,10,0.66,0.8,1.6,40,50,53.33};
+    // for(int i=0;i<b;i++){
+    //     System.out.println("enter the task "+(i+1)+" waiting time:");
+    //     t[i]=sc.nextDouble();
+    // }
+    for(int i=0;i<a;i++){
+        vm[i]=0;
+    }
+
+    for(int i=0;i<b;i++){
+        int k=i%a;
+        if(i<=(b-a)){
+        vm[k]+=t[i];}
+            if(i<=a){
+        System.out.println("task"+(i+1)+"\t"+t[i]+"\tVM"+(k+1));}
+        else{
+        System.out.println("task"+(i+1)+"\t"+t[i]+"\twait("+vm[k]+")"+"\tVM"+(k+1));}
+
+    }
+    double twt=0;
+    for(int i=0;i<a;i++)
+    {
+        twt+=vm[i];
+    }
+    System.out.println("the total waiting time is : "+twt);
+    System.out.println("the average waiting time is : "+twt/a);
+    }
+
+}
